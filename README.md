@@ -169,7 +169,7 @@ key          | description                       | defaults
 -------------|-----------------------------------|----------
 `name`       | name for your application.        | `String ema`
 `pid_path`   | pid path.                         | `String '%d/tmp/ema.pid'`
-`interval`   | reload processes interval.        | `Number 500`
+`timeout`    | processes disconnect timeout.     | `Number 2400`
 `server`     | server directives.                | `Object {}`
 
 ### server directive
