@@ -1,0 +1,21 @@
+{
+  name: 'myapp',
+  server: {
+    dev: {
+      script: './app.js',
+      unmatch_env: 'production',
+      env: {
+        ENV: 'development',
+        PORT: 3000
+      }
+    },
+    web: {
+      script: './app.js',
+      unmatch_env: 'development',
+      env: {
+        ENV: 'production',
+        PORT: 3030
+      }
+    }
+  }
+}

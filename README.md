@@ -5,6 +5,10 @@
 
 **ema** -- Simple process manager for node.js app.
 
+# install
+
+    npm i -g ema
+
 # synopsis
 
     ema [-hVtqd] [-s signal] [-p dirname] [-c filename] [-g directives]
@@ -129,8 +133,8 @@ this configuration file wakes following named processes:
 ```
 $ ema -d
 $ ps ax | grep -v grep | grep myapp:
-10000 s002  S+     0:00.12 myapp:master 
-10001 s002  S+     0:00.41 myapp:worker:dev.1 
+10000 s002  S+     0:00.12 myapp:master
+10001 s002  S+     0:00.41 myapp:worker:dev.1
 10002 s002  S+     0:00.41 myapp:worker:dev.2
 $ ls -a ~ | grep .pid
 .myapp.pid
@@ -141,11 +145,11 @@ with production (4 core cpu):
 ```
 $ NODE_ENV=production ema -d
 $ ps ax | grep -v grep | grep myapp:
-10000 s002  S+     0:00.12 myapp:master 
-10001 s002  S+     0:00.41 myapp:worker:web.1 
-10002 s002  S+     0:00.41 myapp:worker:web.2 
-10003 s002  S+     0:00.41 myapp:worker:web.3 
-10004 s002  S+     0:00.41 myapp:worker:web.4 
+10000 s002  S+     0:00.12 myapp:master
+10001 s002  S+     0:00.41 myapp:worker:web.1
+10002 s002  S+     0:00.41 myapp:worker:web.2
+10003 s002  S+     0:00.41 myapp:worker:web.3
+10004 s002  S+     0:00.41 myapp:worker:web.4
 ```
 
 
