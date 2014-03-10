@@ -1,8 +1,7 @@
 {
   "name": "ema",
   "version": "0.0.1",
-  "private": true,
-  "description": "",
+  "description": "simple process manager",
   "bin": "bin/ema",
   "scripts": {},
   "author": "geta6",
@@ -16,6 +15,5 @@
     "async": "^0.2.10"
   },
   "devDependencies": {
-    "mocha": "*"
   }
 }
