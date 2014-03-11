@@ -130,6 +130,8 @@ if cluster.isMaster
 
   # wakeup apps
 
+  unless fs.existsSync path.dirname program.directives.pid_path
+    mkdirp.sync path.dirname program.directives.pid_path
   fs.writeFile program.directives.pid_path, process.pid, (err) ->
     if err
       error err.stack || err.message
