@@ -238,7 +238,7 @@ else
     args = (_.map (Array::slice.call arguments), coerce).join ''
     args += '\n' unless /[\n\r]$/.test args
     now = new Date
-    fs.appendFile dst, "#{date now} #{args}" if dst
+    fs.appendFile dst, "#{date now} worker:#{process.env.EMA_TITLE}.#{process.env.EMA_CLUSTER}  #{args}" if dst
     write.call @, "\u001b[9#{colors}m#{date now} worker:#{process.env.EMA_TITLE}.#{process.env.EMA_CLUSTER}  \u001b[90m#{args}\u001b[0m"
 
   process.chdir process.env.EMA_PREFIX
