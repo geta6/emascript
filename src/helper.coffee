@@ -64,16 +64,18 @@ exports.configuration = (program, defaults) ->
           throw new Error "'pid_path' should be writeable path"
         else if verbose
           print "✓ 'pid_path' is valid [#{program.directives.pid_path}]\n"
-        program.directives.access_log = exports.conversion program.directives.access_log
-        unless exports.safeforlog program.directives.access_log, { allowNull: yes }
-          throw new Error "'access_log' should be writeable path"
-        else if verbose
-          print "✓ 'access_log' is valid [#{program.directives.access_log}]\n"
-        program.directives.error_log = exports.conversion program.directives.error_log
-        unless exports.safeforlog program.directives.error_log, { allowNull: yes }
-          throw new Error "'error_log' should be writeable path"
-        else if verbose
-          print "✓ 'error_log' is valid [#{program.directives.error_log}]\n"
+        if program.directives.access_log
+          program.directives.access_log = exports.conversion program.directives.access_log
+          unless exports.safeforlog program.directives.access_log, { allowNull: yes }
+            throw new Error "'access_log' should be writeable path"
+          else if verbose
+            print "✓ 'access_log' is valid [#{program.directives.access_log}]\n"
+        if program.directives.error_log
+          program.directives.error_log = exports.conversion program.directives.error_log
+          unless exports.safeforlog program.directives.error_log, { allowNull: yes }
+            throw new Error "'error_log' should be writeable path"
+          else if verbose
+            print "✓ 'error_log' is valid [#{program.directives.error_log}]\n"
         if program.directives.clustering is 'auto'
           program.directives.clustering = os.cpus().length
         else

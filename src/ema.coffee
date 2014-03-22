@@ -244,18 +244,20 @@ else
   process.chdir process.env.EMA_PREFIX
 
   process.title = "#{process.env.EMA_NAME}:worker:#{process.env.EMA_TITLE}.#{process.env.EMA_CLUSTER}"
-  process.env.EMA_STDOUT = helper.conversion process.env.EMA_STDOUT
-  process.env.EMA_STDERR = helper.conversion process.env.EMA_STDERR
+
+  unless process.env.EMA_STDOUT isnt ['null', 'false']
+    process.env.EMA_STDOUT = helper.conversion process.env.EMA_STDOUT
+    unless _.isNull process.env.EMA_STDOUT = helper.conversion process.env.EMA_STDOUT
+      mkdirp.sync path.dirname process.env.EMA_STDOUT
+    process.stdout.write = logger process.stdout.write, process.env.EMA_STDOUT
+
+  unless process.env.EMA_STDERR in ['null', 'false']
+    process.env.EMA_STDERR = helper.conversion process.env.EMA_STDERR
+    unless _.isNull process.env.EMA_STDERR = helper.conversion process.env.EMA_STDERR
+      mkdirp.sync path.dirname process.env.EMA_STDERR
+    process.stderr.write = logger process.stderr.write, process.env.EMA_STDERR
+
   process.env.EMA_SCRIPT = helper.conversion process.env.EMA_SCRIPT
-
-  unless _.isNull process.env.EMA_STDOUT = helper.conversion process.env.EMA_STDOUT
-    mkdirp.sync path.dirname process.env.EMA_STDOUT
-  process.stdout.write = logger process.stdout.write, process.env.EMA_STDOUT
-
-  unless _.isNull process.env.EMA_STDERR = helper.conversion process.env.EMA_STDERR
-    mkdirp.sync path.dirname process.env.EMA_STDERR
-  process.stderr.write = logger process.stderr.write, process.env.EMA_STDERR
-
   delete require.cache[process.env.EMA_SCRIPT] if require.cache[process.env.EMA_SCRIPT]?
   require process.env.EMA_SCRIPT
 
